@@ -14,7 +14,7 @@ const ProductsPage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('https://akgu-backend.vercel.app/api/faculty');
+        const response = await fetch('https://auth-akgu-backend.vercel.app/faculty');
         const data = await response.json();
         setData(data);
         // console.log(data);
