@@ -54,7 +54,7 @@ const AddPage = () => {
 
       const formData = new FormData(e.target);
 
-      const res = await axios.post("https://akgu-backend.vercel.app/api/faculty", {
+      const res = await axios.post("https://auth-akgu-backend.vercel.app/api/faculty", {
         fullname: formData.get("fullname"),
         post: formData.get("post"),
         degree: formData.get("degree"),

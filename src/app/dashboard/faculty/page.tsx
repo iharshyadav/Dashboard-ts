@@ -30,7 +30,7 @@ const ProductsPage = () => {
     // e.preventDefault();
 
     try {
-      const responseDelete = await fetch(`https://akgu-backend.vercel.app/api/faculty/${id}`, {
+      const responseDelete = await fetch(`https://auth-akgu-backend.vercel.app/faculty/${id}`, {
       method : "DELETE",
     })
 

@@ -39,7 +39,7 @@ const Sidebar = () => {
   const handleLogout = async (event:any)=>{
     event.preventDefault();
     try {
-      const res = await fetch ("https://akgu-backend.vercel.app/admin/logout",{
+      const res = await fetch ("https://auth-akgu-backend.vercel.app/admin/logout",{
       method:"GET",
       // headers:{
       //   "Content-Type":"application/json"

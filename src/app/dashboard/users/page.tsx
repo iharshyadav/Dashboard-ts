@@ -15,7 +15,7 @@ const UsersPage =  () => {
    useEffect(()=>{
        const fetchAchievements = async ()=>{
         try {
-        const response = await fetch('https://akgu-backend.vercel.app/api/achievement');
+        const response = await fetch('https://auth-akgu-backend.vercel.app/api/achievement');
         const data = await response.json();
         setData(data);
         console.log(data);
