@@ -14,7 +14,7 @@ const ProductsPage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('https://auth-akgu-backend.vercel.app/faculty');
+        const response = await fetch('https://auth-akgu-backend.vercel.app/api/faculty');
         const data = await response.json();
         setData(data);
         // console.log(data);
@@ -30,7 +30,7 @@ const ProductsPage = () => {
     // e.preventDefault();
 
     try {
-      const responseDelete = await fetch(`https://auth-akgu-backend.vercel.app/faculty/${id}`, {
+      const responseDelete = await fetch(`https://auth-akgu-backend.vercel.app/api/faculty/${id}`, {
       method : "DELETE",
     })
 
