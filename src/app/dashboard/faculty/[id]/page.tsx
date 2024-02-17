@@ -1,10 +1,10 @@
 // import Image from "next/image"
 // import styles from "@/app/ui/dashboard/products/SingleProduct/singleProduct.module.css"
 
-// const SingleProduct = () => {
+const SingleProduct = () => {
     
 
-//   return (
+  return (
 //     <div className={styles.container}>
 //     <div className={styles.infoContainer}>
 //       <div className={styles.imgContainer}>
@@ -37,7 +37,8 @@
 //       </form>
 //     </div>
 //   </div>
-//   )
-// }
+<h1>harsh</h1>
+  )
+}
 
-// export default SingleProduct
+export default SingleProduct

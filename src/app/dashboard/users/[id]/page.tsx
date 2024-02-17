@@ -2,12 +2,12 @@
 // import styles from "../users.module.css";
 // import Image from "next/image";
 
-// const SingleUserPage = async ({ params }:any) => {
+const SingleUserPage = async () => {
   
 //   const { id } = params;
 //   const user = await fetchUser(id);
 
-//   return (
+  return (
 //     <div className={styles.container}>
 //       <div className={styles.infoContainer}>
 //         <div className={styles.imgContainer}>
@@ -42,7 +42,8 @@
 //         </form>
 //       </div>
 //     </div>
-//   );
-// };
+<h1>harsh</h1>
+  );
+};
 
-// export default SingleUserPage;
+export default SingleUserPage;
