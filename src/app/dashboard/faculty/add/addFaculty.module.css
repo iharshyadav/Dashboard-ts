@@ -1,0 +1,71 @@
+.container {
+    background-color: var(--bgSoft);
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+  }
+  
+  .form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  .form input,
+  .form textarea,
+  .form select {
+    padding: 12px;
+    background-color: var(--bg);
+    color: var(--text);
+    border: 2px solid #2e374a;
+    border-radius: 5px;
+    margin-bottom: 30px;
+  }
+  
+  .form input, .form select {
+    width: 45%;
+  }
+  
+  .form textarea{
+    width: 100%;
+  }
+  
+  .form button{
+    width: 30%;
+    padding: 15px;
+    margin-bottom: 25px;
+    background-color: teal;
+    color: var(--text);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .uploadbtn {
+    width: 22rem;
+    padding: 15px;
+    background-color: rgb(147, 149, 149);
+    color: var(--text);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .heading {
+    font: 500;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: aqua;
+    
+  }
+
+  .btn {
+    width: 200px;
+    padding: 15px;
+    margin-bottom: 25px;
+    background-color: teal;
+    color: var(--text);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
