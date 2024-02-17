@@ -21,7 +21,8 @@ const LoginForm = () => {
     try {
       const response = await fetch('https://auth-akgu-backend.vercel.app/admin/login', {
         method: 'POST',
-        credentials: 'include', 
+        'withCredentials':true,
+        // credentials: 'include', 
         headers: {
           'Content-Type': 'application/json',
         },
