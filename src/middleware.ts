@@ -8,6 +8,7 @@ export function middleware(request: NextRequest) {
   const isPublicPath = path === '/admin/login'
 
   const token = request.cookies.get('token')?.value || ''
+  console.log(token);
 
   if(isPublicPath && token) {
     return NextResponse.redirect(new URL('/', request.nextUrl))
