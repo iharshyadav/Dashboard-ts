@@ -15,7 +15,9 @@ const UsersPage =  () => {
    useEffect(()=>{
        const fetchAchievements = async ()=>{
         try {
-        const response = await fetch('https://auth-akgu-backend.vercel.app/api/achievement');
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/achievements`,{
+          credentials: 'include'
+        });
         const data = await response.json();
         setData(data);
         console.log(data);
@@ -31,8 +33,9 @@ const UsersPage =  () => {
     // e.preventDefault();
 
     try {
-      const responseDelete = await fetch(`https://akgu-backend.vercel.app/api/achievement/${id}`, {
+      const responseDelete = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/achievement/${id}`, {
       method : "DELETE",
+      credentials: 'include'
     })
 
     if (!responseDelete.ok) {
@@ -49,7 +52,6 @@ const UsersPage =  () => {
   return (
     <div className={styles.container}>
       <div className={styles.top}>
-        {/* <Search placeholder="Search for a user..." /> */}
         <Link href="/dashboard/users/add">
           <button className={styles.addButton}>Add New</button>
         </Link>
@@ -84,11 +86,11 @@ const UsersPage =  () => {
               <td>{user.createdAt?.toString().slice(4, 16)}</td>
               <td>
                 <div className={styles.buttons}>
-                  <Link href={''}>
+                    <Link href={`/dashboard/users/${user._id}`}>
                     <button className={`${styles.button} ${styles.view}`}>
                       View
                     </button>
-                  </Link>
+                    </Link>
                   <form >
                     <input value={user._id} type="hidden" name="id"  />
                     <button onClick={()=>{

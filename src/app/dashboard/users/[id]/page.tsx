@@ -1,48 +1,54 @@
+'use client';
+import { useEffect, useState } from 'react';
+import styles from "../users.module.css";
+import { usePathname } from "next/navigation";
+import Image from 'next/image';
 
-// import styles from "../users.module.css";
-// import Image from "next/image";
+type DataType = {
+  title?: string;
+  description?: string;
+  imageUrl?: string;
+};
+const SingleUserPage = () => {
+  const pathname = usePathname();
+  const realpath = pathname.split("/").pop();
+  // then use it like this
+const [data, setData] = useState<DataType | null>(null);
 
-const SingleUserPage = async () => {
-  
-//   const { id } = params;
-//   const user = await fetchUser(id);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/achievement/${realpath}`, {
+          credentials: 'include'
+        });
+
+        if (!response.ok) {
+          console.error(`Error: ${response.status}`);
+          return;
+        }
+
+        const achievementData = await response.json();
+        setData(achievementData); 
+      } catch (error) {
+        console.error('Error fetching achievement:', error);
+      }
+    };
+
+    fetchData();
+  }, [realpath]); 
 
   return (
-//     <div className={styles.container}>
-//       <div className={styles.infoContainer}>
-//         <div className={styles.imgContainer}>
-//           <Image src={user.img || "/noavatar.png"} alt="" fill />
-//         </div>
-//         {user.username}
-//       </div>
-//       <div className={styles.formContainer}>
-//         <form action={updateUser} className={styles.form}>
-//           <input type="hidden" name="id" value={user.id}/>
-//           <label>Username</label>
-//           <input type="text" name="username" placeholder={user.username} />
-//           <label>Email</label>
-//           <input type="email" name="email" placeholder={user.email} />
-//           <label>Password</label>
-//           <input type="password" name="password" />
-//           <label>Phone</label>
-//           <input type="text" name="phone" placeholder={user.phone} />
-//           <label>Address</label>
-//           <textarea type="text" name="address" placeholder={user.address} />
-//           <label>Is Admin?</label>
-//           <select name="isAdmin" id="isAdmin">
-//             <option value={true} selected={user.isAdmin}>Yes</option>
-//             <option value={false} selected={!user.isAdmin}>No</option>
-//           </select>
-//           <label>Is Active?</label>
-//           <select name="isActive" id="isActive">
-//             <option value={true} selected={user.isActive}>Yes</option>
-//             <option value={false} selected={!user.isActive}>No</option>
-//           </select>
-//           <button>Update</button>
-//         </form>
-//       </div>
-//     </div>
-<h1>harsh</h1>
+    <div className={styles.container}>
+      <div className={styles.infoContainer}>
+        {data && data.imageUrl && (
+          <Image alt="" width={40} height={40} src={data.imageUrl}></Image>
+        )}
+        {data && data.title && <h1>{data.title}</h1>}
+        {data && data.description && <p>{data.description}</p>}
+      </div>
+      <div className={styles.formContainer}>
+      </div>
+    </div>
   );
 };
 

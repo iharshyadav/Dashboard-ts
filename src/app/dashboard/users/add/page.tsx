@@ -17,7 +17,9 @@ const AddUserPage = () => {
       const formData = new FormData();
       formData.append('image', e.target.elements.image.files[0]);
 
-      const uploadResponse = await axios.post("https://akgu-backend.vercel.app/api/upload", formData);
+      const uploadResponse = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/upload`, formData,{
+        withCredentials: true
+      });
 
       if (uploadResponse.data.msg === "Uploaded successfully") {
         console.log("Image uploaded successfully");
@@ -53,10 +55,12 @@ const AddUserPage = () => {
 
       const formData = new FormData(e.target);
 
-      const res = await axios.post("https://akgu-backend.vercel.app/api/achievement", {
+      const res = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/achievement`, {
         title: formData.get("title"),
          imageUrl: imageUrl,
         description: formData.get("address"),
+      },{
+        withCredentials: true
       });
 
       if (res.status === 200) {

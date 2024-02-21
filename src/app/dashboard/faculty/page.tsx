@@ -2,8 +2,6 @@
 import Image from "next/image";
 import Link from "next/link";
  import styles from "./faculty.module.css";
-// import Search from "@/app/ui/dashboard/search/search";
-//import Pagination from "@/app/ui/dashboard/pagination/pagination";
 import { useEffect, useState } from "react";
 //import { useRouter } from "next/navigation";
 
@@ -14,7 +12,9 @@ const ProductsPage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('https://auth-akgu-backend.vercel.app/api/faculty');
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/faculty`,{
+          credentials: 'include'
+        });
         const data = await response.json();
         setData(data);
         // console.log(data);
@@ -30,7 +30,7 @@ const ProductsPage = () => {
     // e.preventDefault();
 
     try {
-      const responseDelete = await fetch(`https://auth-akgu-backend.vercel.app/api/faculty/${id}`, {
+      const responseDelete = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/faculty/${id}`, {
       method : "DELETE",
     })
 
