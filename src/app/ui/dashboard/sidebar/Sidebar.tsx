@@ -39,16 +39,15 @@ const Sidebar = () => {
   const handleLogout = async (event:any)=>{
     event.preventDefault();
     try {
-      const res = await fetch ("https://auth-akgu-backend.vercel.app/admin/logout",{
+      const res = await fetch (`${process.env.NEXT_PUBLIC_API_URL}/admin/logout`,{
       method:"GET",
-      // headers:{
-      //   "Content-Type":"application/json"
-      // },
+      credentials:"include"
     })
 
     if (res.ok) {
       router.push("/admin/login");
       console.log("logout sucessfully");
+      
     } else {
       throw new Error('Logout was not successful');
     }
@@ -58,9 +57,6 @@ const Sidebar = () => {
     }
 
   }
-
-  
-
   return (
     <div className={styles.container}>
       <div className={styles.user}>
