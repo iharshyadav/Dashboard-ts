@@ -11,7 +11,7 @@ export function middleware(request: NextRequest) {
   console.log(token);
 
   if(isPublicPath && token) {
-    return NextResponse.redirect(new URL('/', request.nextUrl))
+    return NextResponse.redirect(new URL('/dashboard', request.nextUrl))
   }
 
   if (!isPublicPath && !token) {
