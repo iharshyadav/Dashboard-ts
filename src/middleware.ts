@@ -7,8 +7,13 @@ export function middleware(request: NextRequest) {
 
   const isPublicPath = path === '/admin/login'
 
-  const token = request.cookies.get('auth')?.value || '';
-  console.log('Token:', token);
+  const token2 = request.cookies.get('auth')?.value || '';
+
+  localStorage.setItem('token', token2);
+  
+  //console.log('Token:', token);
+
+  const token = localStorage.getItem('token');
 
 
   if(isPublicPath && token) {
