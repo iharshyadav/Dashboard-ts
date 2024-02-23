@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useRouter } from 'next/navigation';
+import toast from "react-hot-toast";
 
 
 const UsersPage =  () => {
@@ -22,7 +23,8 @@ const UsersPage =  () => {
         setData(data);
         console.log(data);
       } catch (error) {
-      console.log(error)
+      // console.log(error)
+      toast.error("Failed to fetch achievement!!");
     }
   };
     fetchAchievements();

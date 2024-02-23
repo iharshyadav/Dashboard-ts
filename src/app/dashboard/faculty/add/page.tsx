@@ -18,9 +18,7 @@ const AddPage = () => {
       const formData = new FormData();
       formData.append('image', e.target.elements.image.files[0]);
 
-      const uploadResponse = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/upload`, formData,{
-        withCredentials: true
-      });
+      const uploadResponse = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/upload`, formData);
 
       if (uploadResponse.data.msg === "Uploaded successfully") {
         console.log("Image uploaded successfully");
@@ -61,7 +59,9 @@ const AddPage = () => {
         degree: formData.get("degree"),
         imageUrl: imageUrl,
       }, {
-        withCredentials: true
+        headers: {
+          'Content-Type': 'application/json',
+        },
       });
 
       console.log("Request headers:", res.config.headers);

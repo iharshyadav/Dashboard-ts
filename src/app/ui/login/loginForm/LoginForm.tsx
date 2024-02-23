@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import styles from "./loginForm.module.css";
 // import { useFormState } from "react-dom";
 import { useState } from "react";
+import toast from "react-hot-toast";
 
 const LoginForm = () => {
   // const [state, formAction] = useFormState(authenticate, undefined);
@@ -31,12 +32,13 @@ const LoginForm = () => {
       if (!response.ok) {
         throw new Error('Authentication failed');
       }
-
+      toast.success("user loggedIn successfully")
       // Redirect the user to the desired page upon successful authentication
       router.push('/dashboard');
     } catch (error) {
-      console.log(error);
-      setError('Authentication failed. Please check your credentials.');
+      // console.log(error);
+      toast.error("Authentication failed. Please check your credentials")
+      // setError('Authentication failed. Please check your credentials.');
     }
   };
 

@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
  import styles from "./faculty.module.css";
 import { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 //import { useRouter } from "next/navigation";
 
 const ProductsPage = () => {
@@ -19,7 +20,7 @@ const ProductsPage = () => {
         setData(data);
         // console.log(data);
       } catch (error) {
-        console.error('Error:', error);
+        toast.error("Failed to fetch faculty!!");
       }
     };
 
@@ -35,12 +36,14 @@ const ProductsPage = () => {
     })
 
     if (!responseDelete.ok) {
-      throw new Error("error");
+      // throw new Error("error");
+      toast.error("Failed to fetch faculty!!");
     }
   //  router.push("/dashboard/faculty")
     
     } catch (error) {
-      console.log(error);
+      // console.log(error);
+      toast.error("Failed to fetch faculty!!");
     }
   }
 

@@ -2,11 +2,11 @@
 import styles from "./addUser.module.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { useRouter } from 'next/navigation';
+//import { useRouter } from "next/navigation";
 
 const AddUserPage = () => {
 
-  const router = useRouter()
+ // const router = useRouter()
   const [imageUrl, setImageUrl] = useState(null);
   const [uploadSuccess, setUploadSuccess] = useState(false); 
 
@@ -66,7 +66,7 @@ const AddUserPage = () => {
       if (res.status === 200) {
         console.log("Acheivement added successfully");
         alert("Acheivement added successfully!");
-       router.push("/dashboard/users");
+     //   router.push("/dashboard/users");
       } else {
         console.log("Acheivement not added");
       }
