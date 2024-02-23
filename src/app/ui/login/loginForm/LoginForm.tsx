@@ -7,6 +7,7 @@ import styles from "./loginForm.module.css";
 // import { useFormState } from "react-dom";
 import { useState } from "react";
 import toast from "react-hot-toast";
+import Cookies from 'js-cookie';
 
 const LoginForm = () => {
   // const [state, formAction] = useFormState(authenticate, undefined);
@@ -32,6 +33,7 @@ const LoginForm = () => {
       if (!response.ok) {
         throw new Error('Authentication failed');
       }
+      Cookies.set('status', 'true');
       toast.success("user loggedIn successfully")
       // Redirect the user to the desired page upon successful authentication
       router.push('/dashboard');
