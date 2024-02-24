@@ -37,6 +37,8 @@
   .userImage{
     border-radius: 50%;
     object-fit: cover;
+    width: 75px;
+    height: auto;
   }
   
   .buttons{

@@ -9,6 +9,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    margin-top: 20px;
   }
   
   .form input,
@@ -68,4 +69,25 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
+  }
+
+
+
+  .previews {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+    margin-top: 32px;
+  }
+  
+  .previewImage {
+    display: block;
+    object-fit: cover;
+    padding-bottom: 2rem;
+  }
+  
+  .previewTitle {
+    margin-top: 4px;
+    padding-bottom: 2rem;
   }

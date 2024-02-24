@@ -1,8 +1,8 @@
 'use client';
 import { useEffect, useState } from 'react';
-import styles from "../users.module.css";
 import { usePathname } from "next/navigation";
 import Image from 'next/image';
+import styles from './singleuser.module.css'
 
 type DataType = {
   title?: string;

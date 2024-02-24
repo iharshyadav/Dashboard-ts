@@ -8,6 +8,12 @@
   --text: white;
   --textSoft: #b7bac1;
 }
+.my-config {
+  --darkmode: 1;
+  --h-accent: 144;
+  --s-accent: 67%;
+  --l-accent: 57%;
+}
 
 * {
   margin: 0;

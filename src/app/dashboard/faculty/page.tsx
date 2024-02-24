@@ -6,6 +6,16 @@ import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 //import { useRouter } from "next/navigation";
 
+
+type Datatype = {
+  _id: string;
+  fullname: string;
+  post: string;
+  degree: string;
+  imageUrl: string;
+  createdAt: Date;
+};
+
 const ProductsPage = () => {
   const [data, setData] = useState([]);
  // const router = useRouter();
@@ -27,13 +37,15 @@ const ProductsPage = () => {
     fetchData();
   }, []);
 
-  const handleDelete = async (id:any)=>{
+  const handleDelete = async (id:Datatype)=>{
     // e.preventDefault();
 
     try {
       const responseDelete = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/faculty/${id}`, {
       method : "DELETE",
+      credentials: 'include'
     })
+    toast.success("Faculty Deleted!!");
 
     if (!responseDelete.ok) {
       // throw new Error("error");
@@ -65,34 +77,31 @@ const ProductsPage = () => {
           </tr>
         </thead>
         <tbody>
-          {data.map((item:any) => (
+          {data.map((item:Datatype) => (
             <tr key={item._id}>
               <td>
                 <div className={styles.product}>
-                  <Image
+                  <img
                     src={item.imageUrl || "/noproduct.jpg"}
-                    alt=""
-                    width={40}
-                    height={40}
                     className={styles.productImage}
-                  />
+                  ></img>
                   {item.fullname}
                 </div>
               </td>
               <td>{item.post}</td>
-              <td>${item.degree}</td>
-              <td>{item.createdAt?.toString().slice(4, 16)}</td>
+              <td>{item.degree}</td>
+              <td>{item.createdAt?.toLocaleString().slice(0, 10)}</td>
               <td>
                 <div className={styles.buttons}>
-                  <Link href={''}>
+                  {/* <Link href={''}>
                     <button className={`${styles.button} ${styles.view}`}>
                       View
                     </button>
-                  </Link>
+                  </Link> */}
                   <form >
                     <input value={item._id} className="text-black" type="hidden" name="id" />
                     <button onClick={()=>{
-                      handleDelete(item._id)
+                      handleDelete(item._id as any) 
                     }} className={`${styles.button} ${styles.delete}`}>
                       Delete
                     </button>

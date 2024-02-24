@@ -1,7 +1,6 @@
 'use client'
 // import Search from "@/app/ui/dashboard/search/search";
 import styles from "./users.module.css";
-import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useRouter } from 'next/navigation';
@@ -73,19 +72,16 @@ const UsersPage =  () => {
             <tr key={user._id}>
               <td>
                 <div className={styles.user}>
-                  <Image
+                  <img
                     src={user.imageUrl || "/noavatar.png"}
-                    alt=""
-                    width={40}
-                    height={40}
                     className={styles.userImage}
-                  />
+                  ></img>
                   {user.username}
                 </div>
               </td>
               <td>{user.title}</td>
               <td>{user.description}</td>
-              <td>{user.createdAt?.toString().slice(4, 16)}</td>
+              <td>{user.createdAt?.toLocaleString().slice(0, 10)}</td>
               <td>
                 <div className={styles.buttons}>
                     <Link href={`/dashboard/users/${user._id}`}>
