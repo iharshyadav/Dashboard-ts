@@ -4,7 +4,7 @@ import Link from "next/link";
  import styles from "./faculty.module.css";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
-//import { useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 
 type Datatype = {
@@ -18,7 +18,7 @@ type Datatype = {
 
 const ProductsPage = () => {
   const [data, setData] = useState([]);
- // const router = useRouter();
+ const router = useRouter();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -46,17 +46,19 @@ const ProductsPage = () => {
       credentials: 'include'
     })
     toast.success("Faculty Deleted!!");
-
+    window.location.reload();
+    
     if (!responseDelete.ok) {
       // throw new Error("error");
       toast.error("Failed to fetch faculty!!");
     }
-  //  router.push("/dashboard/faculty")
+  
     
     } catch (error) {
       // console.log(error);
       toast.error("Failed to fetch faculty!!");
     }
+    router.refresh();
   }
 
   return (
@@ -98,14 +100,14 @@ const ProductsPage = () => {
                       View
                     </button>
                   </Link> */}
-                  <form >
+                  {/* <form > */}
                     <input value={item._id} className="text-black" type="hidden" name="id" />
                     <button onClick={()=>{
                       handleDelete(item._id as any) 
                     }} className={`${styles.button} ${styles.delete}`}>
                       Delete
                     </button>
-                  </form>
+                  {/* </form> */}
                 </div>
               </td>
             </tr>
