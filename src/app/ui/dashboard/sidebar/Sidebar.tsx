@@ -9,6 +9,7 @@ import {
   MdLogout,
 } from "react-icons/md";
 import { useRouter } from "next/navigation";
+import Cookies from 'js-cookie';
 
 const menuItems = [
   {
@@ -39,7 +40,7 @@ const Sidebar = () => {
   const handleLogout = async (event:any)=>{
     event.preventDefault();
     try {
-      const res = await fetch ("https://auth-akgu-backend.vercel.app/admin/logout",{
+      const res = await fetch (`${process.env.NEXT_PUBLIC_API_URL}/admin/logout`,{
       method:"GET",
       // headers:{
       //   "Content-Type":"application/json"
@@ -47,6 +48,7 @@ const Sidebar = () => {
     })
 
     if (res.ok) {
+      Cookies.remove('status');
       router.push("/admin/login");
       console.log("logout sucessfully");
     } else {

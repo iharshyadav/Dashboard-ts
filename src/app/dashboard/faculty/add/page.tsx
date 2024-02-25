@@ -104,25 +104,29 @@ const AddPage = () => {
     <div className={styles.container}>
       <h1 className={styles.heading}>Upload Faculty </h1>
       <div className="flex flex-wrap ">
-      <lr-config
-        ctx-name="my-uploader"
-        pubkey="760b5896368dc596ec82"
-        maxLocalFileSizeBytes={5000000}
-        multiple={false}
-        imgOnly={true}
-        sourceList="local, url, camera, gdrive"
-      ></lr-config>
-      <lr-file-uploader-regular
-        ctx-name="my-uploader"
-        css-src={`https://cdn.jsdelivr.net/npm/@uploadcare/blocks@0.33.2/web/lr-file-uploader-regular.min.css`}
-        class="my-config"
-      ></lr-file-uploader-regular>
-      <lr-upload-ctx-provider ref={ctxProviderRef} ctx-name="my-uploader"> </lr-upload-ctx-provider>
-      <h1 className="ml-48 font-bold text-2xl">Faculty image needed to be under 400x450 px</h1>
+        <lr-config
+          ctx-name="my-uploader"
+          pubkey="760b5896368dc596ec82"
+          maxLocalFileSizeBytes={5000000}
+          multiple={false}
+          imgOnly={true}
+          sourceList="local, url, camera, gdrive"
+        ></lr-config>
+        <lr-file-uploader-regular
+          ctx-name="my-uploader"
+          css-src={`https://cdn.jsdelivr.net/npm/@uploadcare/blocks@0.33.2/web/lr-file-uploader-regular.min.css`}
+          class="my-config"
+        ></lr-file-uploader-regular>
+        <lr-upload-ctx-provider ref={ctxProviderRef} ctx-name="my-uploader">
+          {" "}
+        </lr-upload-ctx-provider>
+        <h1 className="ml-48 font-bold text-2xl">
+          Faculty image needed to be under 400x450 px
+        </h1>
       </div>
-      
-      <div className={styles.previews} >
-        {files.map((file:Datatype) => (
+
+      <div className={styles.previews}>
+        {files.map((file: Datatype) => (
           <div key={file.uuid}>
             <img
               className={styles.previewImage}
@@ -130,30 +134,34 @@ const AddPage = () => {
               src={`${file.cdnUrl}/-/preview/-/scale_crop/400x450/smart_faces_objects/`}
               width="200"
               height="200"
-              alt={file.fileInfo.originalFilename  || ''}
-              title={file.fileInfo.originalFilename || ''}
+              alt={file.fileInfo.originalFilename || ""}
+              title={file.fileInfo.originalFilename || ""}
             />
-            <span className={styles.previewTitle} >
-             FileName: {file.fileInfo.originalFilename}&nbsp;&nbsp;&nbsp; Filesize:&nbsp;{formatSize(file.fileInfo.size)}&nbsp;&nbsp;&nbsp; Dimensions:&nbsp;{file.cdnUrlModifiers && file.cdnUrlModifiers.split('/')[2]?`${file.cdnUrlModifiers.split('/')[2]}PX`: `${file.fileInfo.imageInfo.width}X${file.fileInfo.imageInfo.height} PX`}
+            <span className={styles.previewTitle}>
+              FileName: {file.fileInfo.originalFilename}&nbsp;&nbsp;&nbsp;
+              Filesize:&nbsp;{formatSize(file.fileInfo.size)}&nbsp;&nbsp;&nbsp;
+              Dimensions:&nbsp;
+              {file.cdnUrlModifiers && file.cdnUrlModifiers.split("/")[2]
+                ? `${file.cdnUrlModifiers.split("/")[2]}PX`
+                : `${file.fileInfo.imageInfo.width}X${file.fileInfo.imageInfo.height} PX`}
             </span>
           </div>
         ))}
       </div>
 
-    <form onSubmit={handleSubmit} className={styles.form}>
-      <input type="text" placeholder="title" name="fullname" required />
-      <select name="post" id="post">
-        <option value="general">Choose a Category</option>
-        <option value="HOD">HOD</option>
-        <option value="Professor">Professor</option>
-        <option value="Associate Professor">Associate Professor</option>
-      </select>
-      <input type="text" placeholder="degree" name="degree" />
-      <button type="submit">Submit Faculty</button>
-    </form>
-    
-  </div>
-  )
+      <form onSubmit={handleSubmit} className={styles.form}>
+        <input type="text" placeholder="title" name="fullname" required />
+        <select name="post" id="post">
+          <option value="general">Choose a Category</option>
+          <option value="HOD">HOD</option>
+          <option value="Professor">Professor</option>
+          <option value="Associate Professor">Associate Professor</option>
+        </select>
+        <input type="text" placeholder="degree" name="degree" />
+        <button type="submit">Submit Faculty</button>
+      </form>
+    </div>
+  );
 }
 
 export default AddPage
