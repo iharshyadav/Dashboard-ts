@@ -42,6 +42,7 @@ const Sidebar = () => {
     try {
       const res = await fetch (`${process.env.NEXT_PUBLIC_API_URL}/admin/logout`,{
       method:"GET",
+      credentials:"include"
       // headers:{
       //   "Content-Type":"application/json"
       // },
